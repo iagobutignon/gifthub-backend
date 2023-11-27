@@ -1,3 +1,8 @@
 /.commands
 /.venv
 /.vscode
+app/modules/auth/__pycache__/auth_controller.cpython-311.pyc
+app/modules/auth/__pycache__/auth_repository.cpython-311.pyc
+app/modules/auth/__pycache__/user_model.cpython-311.pyc
+app/modules/auth/__pycache__/user_repository.cpython-311.pyc
+app/modules/shared/__pycache__/guid.cpython-311.pyc
