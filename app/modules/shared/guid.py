@@ -2,5 +2,5 @@ import uuid
 
 
 class Guid():
-	def new(self):
-		return uuid.uuid4()
+	def new():
+		return str(uuid.uuid4())

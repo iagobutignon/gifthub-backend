@@ -2,21 +2,14 @@ CREATE DATABASE fabrico;
 
 CREATE TABLE users (
     id UUID NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR (16) NOT NULL,
-    CONSTRAINT user_pk PRIMARY KEY (id),
-    CONSTRAINT email_unique UNIQUE(email)
-);
-
-CREATE TABLE profiles (
-    id UUID NOT NULL,
-    user_id UUID NOT NULL,
     address_id UUID NOT NULL,
     image BLOB,
     name VARCHAR(30) NOT NULL,
     surname VARCHAR(50) NOT NULL,
-    CONSTRAINT profile_pk PRIMARY KEY (id),
-    CONSTRAINT users_profiles_fk FOREIGN KEY (user_id) REFERENCES users(id)
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR (16) NOT NULL,
+    CONSTRAINT user_pk PRIMARY KEY (id),
+    CONSTRAINT email_unique UNIQUE(email)
     CONSTRAINT addresses_profiles_fk FOREIGN KEY (address_id) REFERENCES addresses(id)
 );
 

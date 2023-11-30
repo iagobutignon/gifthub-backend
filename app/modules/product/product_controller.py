@@ -5,32 +5,62 @@ product_blueprint = Blueprint("product", __name__)
 
 
 class ProductController():
-    @product_blueprint.post("/create_product")
-    def create_product(self):
-        data = request.get_json()
+    @product_blueprint.get("/<id>")
+    def get_product(id):
+        try:
+            None
+            # TODO: Implementar get_product
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }  
 
-        return data, 200
+    @product_blueprint.get("/")
+    def get_products():
+        try:
+            None
+            # TODO: Implementar get_products
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }  
 
-    @product_blueprint.post("/edit_product")
-    def edit_product(self):
-        data = request.get_json()
+    @product_blueprint.post("/")
+    def create_product():
+        try:
+            None
+            # TODO: Implementar create_product
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }  
 
-        return data, 200
+    @product_blueprint.put("/<id>")
+    def edit_product(id):
+        try:
+            None
+            # TODO: Implementar edit_product
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }  
 
-    @product_blueprint.post("/delete_product")
+    @product_blueprint.delete("/<id>")
     def delete_product():
-        data = request.get_json()
-
-        return data, 200
-
-    @product_blueprint.post("/get_product")
-    def get_product():
-        data = request.get_json()
-
-        return data, 200
-
-    @product_blueprint.post("/list_products")
-    def list_products():
-        data = request.get_json()
-
-        return data, 200
+        try:
+            None
+            # TODO: Implementar delete_product
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }  
