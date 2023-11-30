@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "e93611aa-d9d7-4c41-bc17-9709f771033f",
+		"name": "gifthub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12614852"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/user/ee61ef3f-a801-457c-b231-d59332073d3a",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"ee61ef3f-a801-457c-b231-d59332073d3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"iago.butignon@gmail.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iago\",\n    \"surname\": \"Butignon\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.109:8000/user/sign_up",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"iago.butignon@google.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iagoo\",\n    \"surname\": \"Butignon\",\n    \"description\": \"Lorem ipsum dolor si a amet\",\n    \"address\": {\n        \"number\": \"123\",\n        \"street\": \"Rua Adercia Machado Gontijo\",\n        \"district\": \"Residencial Florida\",\n        \"city\": \"Ribeirão Preto\",\n        \"state\": \"SP\",\n        \"cep\": \"14026210\",\n        \"complement\": \"apt 13\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.109:8000/user/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePicture",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"iago.butignon@gmail.com\",\n    \"password\": \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.0.109:8000/user/sign_in",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePassword",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ForgotPassword",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/user/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "GetEvent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/event/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/event/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateEvent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/event/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEvent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/event/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEvent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/event/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "GetProduct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/product/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"product",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/product/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/product/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/product/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"product",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.0.109:8000/product/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"109"
+							],
+							"port": "8000",
+							"path": [
+								"product",
+								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
