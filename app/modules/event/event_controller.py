@@ -15,8 +15,20 @@ class EventController():
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }    
-
+            }
+    
+    @event_blueprint.get("/by_user/<id>")
+    def get_event_by_users(userId):
+        try:
+            None
+            # TODO: Implementar get_events
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }
+        
     @event_blueprint.get("/<id>")
     def get_event(id):
         try:

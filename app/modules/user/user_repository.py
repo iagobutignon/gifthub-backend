@@ -46,3 +46,42 @@ class UserRepository:
         user.address = userModel.address or user.address
 
         return user
+    
+    def updateUserPicture(id, userPicture):
+        user = None
+        for u in users:
+            if u.id == id:
+                user = u
+                break
+        
+        if user == None:
+            raise Errors.userNotFound()
+        
+        user.picture = userPicture
+
+        return user
+
+    def deleteUser(id):
+        user = None
+        for u in users:
+            if u.id == id:
+                user = u
+                break
+        
+        if user == None:
+            raise Errors.userNotFound()
+        
+        users.remove(user)
+
+        return user
+    
+    def updatePassword(email, password, newPassword):
+        for user in users:
+            if user.email == email:
+                if user.password == password:
+                    user.password = newPassword
+                    return user
+                else:
+                    raise Errors.invalidPassword()
+        
+        raise Errors.userNotFound()

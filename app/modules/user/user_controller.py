@@ -20,7 +20,7 @@ class UserController():
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }, e.args[1]
+            }, e.args[2]
 
     @user_blueprint.post("/")
     def sign_up():
@@ -36,7 +36,7 @@ class UserController():
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }, e.args[1]
+            }, e.args[2]
 
     @user_blueprint.put("/<id>")
     def edit_user(id):
@@ -51,19 +51,20 @@ class UserController():
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }, e.args[1]
+            }, e.args[2]
     
     @user_blueprint.delete("/<id>")
     def delete_user(id):
         try:
-            None
-            # TODO: Implementar delete
+            result = UserRepository.deleteUser(id)
+
+            return result.toJson(), 200
         except Exception as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }
+            }, e.args[2]
         
     @user_blueprint.post("/sign_in")
     def sign_in():
@@ -76,17 +77,20 @@ class UserController():
             return result.toJson(), 200
         
         except Exception as e:
+            print(e)
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }, e.args[1]
+            }, e.args[2]
 
-    @user_blueprint.put("/update_picture")
-    def update_picture(self):
+    @user_blueprint.put("/update_picture/<id>")
+    def update_picture(id):
         try:
-            None
-            # TODO: Implementar update_picture
+            picture = request.json['picture']
+            result = UserRepository.updateUserPicture(id, picture)
+
+            return result.toJson(), 200
         except Exception as e:
             return {
                 'code': e.args[0],
@@ -109,8 +113,14 @@ class UserController():
     @user_blueprint.post("/update_password")
     def update_password():
         try:
-            None
-            # TODO: Implementar update_password
+            data = request.get_json()
+            email = data['email']
+            password = data['password']
+            newPassword = data['newPassword']
+
+            result = UserRepository.updatePassword(email, password, newPassword)
+
+            return result.toJson(), 200
         except Exception as e:
             return {
                 'code': e.args[0],
