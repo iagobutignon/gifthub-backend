@@ -13,6 +13,14 @@ class EventRepository:
     
         raise Errors.eventNotFound()
     
+    def getEventsByUserId(id):
+        aux = []
+        for e in events:
+            if e.userId == id:
+                aux.append(e)
+        
+        return aux
+
     def createEvent(eventModel):
         events.append(eventModel)
             
@@ -29,6 +37,11 @@ class EventRepository:
             raise Errors.eventNotFound()
         
         event.name = eventModel.name or event.name
+        event.description = eventModel.description or event.description
+        event.date = eventModel.date or event.date
+        event.time = eventModel.time or event.time
+        event.image = eventModel.image or event.image
+        event.address = eventModel.address or event.address
 
         return event
     
@@ -43,3 +56,5 @@ class EventRepository:
             raise Errors.eventNotFound()
         
         events.remove(event)
+
+        return event
