@@ -15,18 +15,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/user/ee61ef3f-a801-457c-b231-d59332073d3a",
+							"raw": "http://{{serverip}}/user/2e33d7ec-a995-4573-92b4-29da798c8420",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
-								"ee61ef3f-a801-457c-b231-d59332073d3a"
+								"2e33d7ec-a995-4573-92b4-29da798c8420"
 							]
 						}
 					},
@@ -47,18 +43,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://192.168.0.109:8000/user/sign_up",
+							"raw": "http://{{serverip}}/user/",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
-								"sign_up"
+								""
 							]
 						}
 					},
@@ -79,18 +71,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://192.168.0.109:8000/user/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/user/2e33d7ec-a995-4573-92b4-29da798c8420",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"2e33d7ec-a995-4573-92b4-29da798c8420"
 							]
 						}
 					},
@@ -119,15 +107,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://192.168.0.109:8000/user/sign_in",
+							"raw": "http://{{serverip}}/user/sign_in",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"sign_in"
@@ -158,15 +142,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/user/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/user/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
@@ -186,18 +166,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/event/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/event/1f37bf5f-0066-43e5-850f-652af02d12eb",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"event",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"1f37bf5f-0066-43e5-850f-652af02d12eb"
 							]
 						}
 					},
@@ -209,18 +185,46 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/event/",
+							"raw": "http://{{serverip}}/event/",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"event",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEventsByUserId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{serverip}}/event/get_events_by_user_id/d6e36bfa-8000-41ed-9ca6-d24f70eea950",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"event",
+								"get_events_by_user_id",
+								"d6e36bfa-8000-41ed-9ca6-d24f70eea950"
 							]
 						}
 					},
@@ -231,16 +235,21 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"d6e36bfa-8000-41ed-9ca6-d24f70eea950\",\n    \"name\": \"Confra da Urmobo\",\n    \"date\": \"16/12/2023\",\n    \"time\": \"19:00\",\n    \"description\": \"Dia da confra da empresa, dia bom, dia legal\",\n    \"address\": {\n        \"cep\": \"14027-250\",\n        \"number\": \"900\",\n        \"street\": \"Rua Adercia Machado Gontijo\",\n        \"district\": \"Residencial Florida\",\n        \"city\": \"Ribeirão Preto\",\n        \"state\": \"SP\",\n        \"complement\": \"apt 13\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://192.168.0.109:8000/event/",
+							"raw": "http://{{serverip}}/event/",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"event",
 								""
@@ -254,19 +263,24 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": {\n        \"cep\": \"14027-250\",\n        \"city\": \"Ribeirão Preto\",\n        \"complement\": \"apt 13\",\n        \"district\": \"Residencial Florida\",\n        \"number\": \"900\",\n        \"state\": \"SP\",\n        \"street\": \"Rua Adercia Machado Gontijo\"\n    },\n    \"date\": \"16/12/2023\",\n    \"description\": \"Dia da confra da empresa, dia bom, dia legal\",\n    \"id\": \"81c0fc9a-b5fb-4e44-a14e-cd1e20cccfeb\",\n    \"image\": null,\n    \"name\": \"Confraternizacao da Urmobo\",\n    \"time\": \"19:00\",\n    \"user_id\": \"d6e36bfa-8000-41ed-9ca6-d24f70eea950\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://192.168.0.109:8000/event/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/event/81c0fc9a-b5fb-4e44-a14e-cd1e20cccfeb",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"event",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"81c0fc9a-b5fb-4e44-a14e-cd1e20cccfeb"
 							]
 						}
 					},
@@ -278,18 +292,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/event/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/event/4562144a-f7ce-4db3-beb3-47f64d30db80",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"event",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"4562144a-f7ce-4db3-beb3-47f64d30db80"
 							]
 						}
 					},
@@ -306,18 +316,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/product/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/product/179bf700-14db-4323-bab1-1e350c7b4aec",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"product",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"179bf700-14db-4323-bab1-1e350c7b4aec"
 							]
 						}
 					},
@@ -329,15 +335,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/product/",
+							"raw": "http://{{serverip}}/product/",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"product",
 								""
@@ -347,20 +349,24 @@
 					"response": []
 				},
 				{
+					"name": "GetProductsByEventId",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
 					"name": "CreateProduct",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/product/",
+							"raw": "http://{{serverip}}/product/",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"product",
 								""
@@ -374,19 +380,24 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": \"1\",\n    \"name\": \"Nike Running\",\n    \"value\": 150,\n    \"description\": \"Falso tb,\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://192.168.0.109:8000/product/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/product/1929bbe7-5eff-4159-817b-eebf6852d3c0",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"product",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"1929bbe7-5eff-4159-817b-eebf6852d3c0"
 							]
 						}
 					},
@@ -398,18 +409,39 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.0.109:8000/product/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/product/1929bbe7-5eff-4159-817b-eebf6852d3c0",
 							"protocol": "http",
 							"host": [
-								"192",
-								"168",
-								"0",
-								"109"
+								"{{serverip}}"
 							],
-							"port": "8000",
 							"path": [
 								"product",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"1929bbe7-5eff-4159-817b-eebf6852d3c0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "GetAddressByCep",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{serverip}}/address/get_address_by_cep/14027250",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"address",
+								"get_address_by_cep",
+								"14027250"
 							]
 						}
 					},
