@@ -29,6 +29,17 @@ class ProductRepository:
             return product_model
         except:
             raise Errors.error_creating_product()
+        
+    def create_products(product_model_list):
+        try:
+            for p in product_model_list:
+                database.session.add(p)
+                print(p.toJson())
+            database.session.commit()
+
+            ProductModel.query.filter_by(event_id=id)
+        except:
+            raise Errors.error_creating_product()
     
     def update_product(id, product_model):
         product = ProductModel.query.filter_by(id=id).first()

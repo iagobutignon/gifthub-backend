@@ -443,26 +443,6 @@
 					"response": []
 				},
 				{
-					"name": "ExportProductsByEventId",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://{{serverip}}/product/export_products/8c0a03d3-149c-40b1-a30d-858231fb431d",
-							"protocol": "http",
-							"host": [
-								"{{serverip}}"
-							],
-							"path": [
-								"product",
-								"export_products",
-								"8c0a03d3-149c-40b1-a30d-858231fb431d"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "CreateProduct",
 					"request": {
 						"method": "POST",
@@ -524,14 +504,64 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/product/4aac6895-bccf-42b1-8d12-aa04d1ec4270",
+							"raw": "http://{{serverip}}/product/47f21117-c03d-4a11-a6c6-c9dad72739f8",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"product",
-								"4aac6895-bccf-42b1-8d12-aa04d1ec4270"
+								"47f21117-c03d-4a11-a6c6-c9dad72739f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExportProductsByEventId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{serverip}}/product/export_products/8c0a03d3-149c-40b1-a30d-858231fb431d",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"product",
+								"export_products",
+								"8c0a03d3-149c-40b1-a30d-858231fb431d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ImportProductsToEvent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/iagobutignon/Projects/te/trab-final/gifthub-backend/file.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{serverip}}/product/import_products/8c0a03d3-149c-40b1-a30d-858231fb431d",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"product",
+								"import_products",
+								"8c0a03d3-149c-40b1-a30d-858231fb431d"
 							]
 						}
 					},

@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint, request, send_file
 from app.modules.product.product_model import ProductModel
 
@@ -116,19 +117,13 @@ class ProductController():
     @product_blueprint.put("/import_products/<id>")
     def import_products(id):
         try:
-            if len(request.files) < 1:
-                return 'Nenhum arquivo recebido', 400
+            result = ProductService.import_products_to_event(id, request.files)
 
-            arquivo = request.files[0]
-            caminho_do_arquivo = 'temp/arquivo.txt'
-
-            arquivo.save(caminho_do_arquivo)
-
-            return 'Arquivo recebido e salvo com sucesso!', 200
-
+            return [e.toJson() for e in result], 200
         except CustomError as e:
             return e.to_response()
-        except:
+        except Exception as e:
+            print(e)
             return {
                 'code': 1,
                 'message': 'Ocorreu um erro'
