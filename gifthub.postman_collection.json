@@ -34,14 +34,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/user/0e83aa11-d34c-46ab-95ca-8daf1263d0f3",
+							"raw": "http://{{serverip}}/user/adb53ecf-9d92-4ef8-982f-69bced7fae11",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"user",
-								"0e83aa11-d34c-46ab-95ca-8daf1263d0f3"
+								"adb53ecf-9d92-4ef8-982f-69bced7fae11"
 							]
 						}
 					},
@@ -107,7 +107,28 @@
 					"name": "UpdatePicture",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"picture\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{serverip}}/user/update_picture/0e83aa11-d34c-46ab-95ca-8daf1263d0f3",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"user",
+								"update_picture",
+								"0e83aa11-d34c-46ab-95ca-8daf1263d0f3"
+							]
+						}
 					},
 					"response": []
 				},
