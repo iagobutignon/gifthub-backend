@@ -10,19 +10,38 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "GetUser",
+					"name": "GetUsers",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/user/2e33d7ec-a995-4573-92b4-29da798c8420",
+							"raw": "http://{{serverip}}/user/",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"user",
-								"2e33d7ec-a995-4573-92b4-29da798c8420"
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{serverip}}/user/0e83aa11-d34c-46ab-95ca-8daf1263d0f3",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"user",
+								"0e83aa11-d34c-46ab-95ca-8daf1263d0f3"
 							]
 						}
 					},
@@ -35,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"iago.butignon@gmail.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iago\",\n    \"surname\": \"Butignon\"\n}",
+							"raw": "{\n    \"email\": \"iago.butignon1@google.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iagoo\",\n    \"surname\": \"Butignon\",\n    \"description\": \"Lorem ipsum dolor si a amet\",\n    \"cep\": \"14026210\",\n    \"number\": \"123\",\n    \"street\": \"Rua Adercia Machado Gontijo\",\n    \"district\": \"Residencial Florida\",\n    \"city\": \"Ribeirão Preto\",\n    \"state\": \"SP\",\n    \"complement\": \"apt 13\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -63,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"iago.butignon@google.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iagoo\",\n    \"surname\": \"Butignon\",\n    \"description\": \"Lorem ipsum dolor si a amet\",\n    \"address\": {\n        \"number\": \"123\",\n        \"street\": \"Rua Adercia Machado Gontijo\",\n        \"district\": \"Residencial Florida\",\n        \"city\": \"Ribeirão Preto\",\n        \"state\": \"SP\",\n        \"cep\": \"14026210\",\n        \"complement\": \"apt 13\"\n    }\n}",
+							"raw": "{\n    \"email\": \"iago.butignon1@google.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iago\",\n    \"surname\": \"Butignon\",\n    \"description\": \"Lorem ipsum dolor si a amet\",\n    \"cep\": \"14026210\",\n    \"number\": \"123\",\n    \"street\": \"Rua Adercia Machado Gontijo\",\n    \"district\": \"Residencial Florida\",\n    \"city\": \"Ribeirão Preto\",\n    \"state\": \"SP\",\n    \"complement\": \"apt 13\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,14 +90,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{serverip}}/user/2e33d7ec-a995-4573-92b4-29da798c8420",
+							"raw": "http://{{serverip}}/user/0e83aa11-d34c-46ab-95ca-8daf1263d0f3",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"user",
-								"2e33d7ec-a995-4573-92b4-29da798c8420"
+								"0e83aa11-d34c-46ab-95ca-8daf1263d0f3"
 							]
 						}
 					},
@@ -99,7 +118,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"iago.butignon@gmail.com\",\n    \"password\": \"123456789\"\n}",
+							"raw": "{\n    \"email\": \"iago.butignon1@google.com\",\n    \"password\": \"123456789\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -124,7 +143,27 @@
 					"name": "UpdatePassword",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"iago.butignon2@google.com\",\n    \"password\": \"1234\",\n    \"new_password\": \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{serverip}}/user/update_password",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"user",
+								"update_password"
+							]
+						}
 					},
 					"response": []
 				},
@@ -142,14 +181,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/user/4a66f6d2-299f-417a-b01b-b8b3a05e5d4c",
+							"raw": "http://{{serverip}}/user/0e83aa11-d34c-46ab-95ca-8daf1263d0f3",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"user",
-								"4a66f6d2-299f-417a-b01b-b8b3a05e5d4c"
+								"0e83aa11-d34c-46ab-95ca-8daf1263d0f3"
 							]
 						}
 					},
@@ -352,7 +391,19 @@
 					"name": "GetProductsByEventId",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://{{serverip}}/product/get_products_by_event_id/1",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"product",
+								"get_products_by_event_id",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -361,6 +412,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": \"1\",\n    \"name\": \"Air dots\",\n    \"value\": 200,\n    \"description\": \"Saporra é falso tb,\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://{{serverip}}/product/",
 							"protocol": "http",
@@ -382,7 +442,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"event_id\": \"1\",\n    \"name\": \"Nike Running\",\n    \"value\": 150,\n    \"description\": \"Falso tb,\"\n}",
+							"raw": "{\n    \"event_id\": \"1\",\n    \"name\": \"Nike Running 2\",\n    \"value\": 150,\n    \"description\": \"Falso tb,\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -409,14 +469,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/product/1929bbe7-5eff-4159-817b-eebf6852d3c0",
+							"raw": "http://{{serverip}}/product/179bf700-14db-4323-bab1-1e350c7b4aec",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"product",
-								"1929bbe7-5eff-4159-817b-eebf6852d3c0"
+								"179bf700-14db-4323-bab1-1e350c7b4aec"
 							]
 						}
 					},

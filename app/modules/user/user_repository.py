@@ -1,87 +1,100 @@
 from app.modules.shared.errors import Errors
 from app.modules.infra.database import users
+from app.modules.user.user_model import UserModel
+from app.modules.infra.database import database
 
 
 class UserRepository:
+    def getUsers():
+        users = UserModel.query.all()
+
+        return users
+
     def getUserById(id):
-        for user in users:
-            if user.id == id:
-                return user
-            
-        raise Errors.userNotFound()
+        user = UserModel.query.filter_by(id=id).first()
+
+        print(user)
+        
+        if user == None:
+            raise Errors.userNotFound()
+        
+        return user
 
     def getUserByCredential(email, password):
-        for user in users:
-            if user.email == email:
-                if user.password == password:
-                    return user
-                else:
-                    raise Errors.invalidPassword()
+        user = UserModel.query.filter_by(email=email).first()
         
-        raise Errors.userNotFound()
+        if user == None:
+            raise Errors.userNotFound()
+        if user.password != password:
+            raise Errors.invalidPassword()
+        
+        return user
 
     def createUser(userModel):
-        for user in users:
-            if user.email == userModel.email:
-                raise Errors.userAlreadyExists()
+        try:
+            database.session.add(userModel)
+            database.session.commit()
 
-        users.append(userModel)
-            
-        return userModel
+            return userModel
+        except:
+            raise Errors.userAlreadyExists()
     
     def updateUser(id, userModel):
-        user = None
-        for u in users:
-            if u.id == id:
-                user = u
-                break
-        
+        user = UserModel.query.filter_by(id=id).first()
+
         if user == None:
             raise Errors.userNotFound()
-        
+
+        user.email = userModel.email or user.email
+        user.password = userModel.password or user.password
         user.name = userModel.name or user.name
         user.surname = userModel.surname or user.surname
-        user.email = userModel.email or user.email
         user.description = userModel.description or user.description
-        user.address = userModel.address or user.address
+        user.cep = userModel.cep or user.cep
+        user.number = userModel.number or user.number
+        user.street = userModel.street or user.street
+        user.district = userModel.district or user.district
+        user.city = userModel.city or user.city
+        user.state = userModel.state or user.state
+        user.complement = userModel.complement or user.complement
+
+        database.session.commit()
 
         return user
-    
-    def updateUserPicture(id, userPicture):
-        user = None
-        for u in users:
-            if u.id == id:
-                user = u
-                break
         
+    def updateUserPicture(id, userPicture):
+        user = UserModel.query.filter_by(id=id).first()
+
         if user == None:
             raise Errors.userNotFound()
-        
+
         user.picture = userPicture
+
+        database.session.commit()
 
         return user
 
     def deleteUser(id):
-        user = None
-        for u in users:
-            if u.id == id:
-                user = u
-                break
+        user = UserModel.query.filter_by(id=id).first()
         
         if user == None:
             raise Errors.userNotFound()
         
-        users.remove(user)
+        database.session.delete(user)
+        database.session.commit()
 
         return user
     
     def updatePassword(email, password, newPassword):
-        for user in users:
-            if user.email == email:
-                if user.password == password:
-                    user.password = newPassword
-                    return user
-                else:
-                    raise Errors.invalidPassword()
+        user = UserModel.query.filter_by(email=email).first()
+
+        if user == None:
+            raise Errors.userNotFound()
+        if user.password != password:
+            raise Errors.invalidPassword()
         
-        raise Errors.userNotFound()
+        user.password = newPassword
+
+        database.session.commit()
+
+        return user

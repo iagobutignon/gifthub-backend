@@ -8,6 +8,19 @@ user_blueprint = Blueprint("user", __name__)
 
 
 class UserController():
+    @user_blueprint.get("/")
+    def get():
+        try:
+            result = UserRepository.getUsers()
+
+            return [e.toJson() for e in result]
+        except Exception as e:
+            return {
+                'code': e.args[0],
+                'message': e.args[1],
+                'statusCode': e.args[2]
+            }, e.args[2]
+
     @user_blueprint.get("/<id>")
     def get_user(id):
         try:
@@ -116,9 +129,9 @@ class UserController():
             data = request.get_json()
             email = data['email']
             password = data['password']
-            newPassword = data['newPassword']
+            new_password = data['new_password']
 
-            result = UserRepository.updatePassword(email, password, newPassword)
+            result = UserRepository.updatePassword(email, password, new_password)
 
             return result.toJson(), 200
         except Exception as e:

@@ -1,21 +1,13 @@
-# import mariadb
-
-# from app.modules.infra.database import configure_database
+from app.modules.infra.database import configure_database
 from flask import Flask
 from app.modules.user.user_controller import user_blueprint
 from app.modules.event.event_controller import event_blueprint
 from app.modules.product.product_controller import product_blueprint
 from app.modules.address.address_controller import address_blueprint
 
-# conn = mariadb.connect(
-#     user="root",
-#     password="fabrico123",
-#     host="localhost",
-#     port=3306,
-#     database="banco_do_fabrico",
-# )
 
 app = Flask(__name__)
+configure_database(app)
 
 app.register_blueprint(user_blueprint, url_prefix="/user")
 app.register_blueprint(event_blueprint, url_prefix="/event")

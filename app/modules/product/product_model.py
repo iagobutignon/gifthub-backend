@@ -1,36 +1,68 @@
-from app.modules.shared.guid import Guid
+import uuid
+import datetime
+
+from sqlalchemy.dialects.postgresql import UUID
+from app.modules.infra.database import database
 
 
-class ProductModel:
+class ProductModel(database.Model):
+    __tablaname__ = 'products'
+
+    id = database.Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4,
+        unique=True,
+        nullable=False,
+    )
+    email = database.Column(
+        database.String(100),
+        unique=True,
+        nullable=False
+    )
+    password = database.Column(
+        database.String(100),
+        nullable=False
+    )
+    name = database.Column(
+        database.String(100),
+        nullable=False
+    )
+    surname = database.Column(
+        database.String(100),
+        nullable=False
+    )
+    description = database.Column(
+        database.String(255),
+        nullable=False
+    )
+    created_at = database.Column(
+        database.DateTime,
+        default=datetime.datetime.now(),
+        nullable=False
+    )
+    updated_at = database.Column(
+        database.DateTime,
+        default=datetime.datetime.now(),
+        onupdate=datetime.datetime.now(),
+        nullable=False
+    )
+
     def __init__(self, data):
-        self.id = Guid.new()
-        try: 
-            self.eventId = data['event_id']
-        except:
-            self.eventId = None
-        try:
-            self.image = data['image']
-        except:
-            self.image = None
-        try:
-            self.name = data['name']
-        except:
-            self.name = None
-        try:
-            self.value = data['value']
-        except:
-            self.value = None
-        try:
-            self.description = data['description']
-        except:
-            self.description = None
+        self.eventId = data['event_id']
+        self.image = data['image']
+        self.name = data['name']
+        self.value = data['value']
+        self.description = data['description']
 
     def toJson(self):
         return {
-            'id': self.id,
+            'id': str(self.id),
             'event_id': self.eventId,
             'image': self.image,
             'name': self.name,
             'value': self.value,
             'description': self.description,
+            'created_at': str(self.created_at),
+            'updated_at': str(self.updated_at)
         }

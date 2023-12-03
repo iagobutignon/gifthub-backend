@@ -1,0 +1,16 @@
+services:
+  postgres:
+    container_name: postgres
+    working_dir: /usr/
+    image: postgres
+    environment:
+      POSTGRES_DB: banco_do_fabrico
+      POSTGRES_USER: fabrico
+      POSTGRES_PASSWORD: fabrico123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+volumes:
+  pgdata:
