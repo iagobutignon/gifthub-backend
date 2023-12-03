@@ -4,45 +4,45 @@ from app.modules.infra.database import database
 
 
 class UserRepository:
-    def getUsers():
+    def get_users():
         users = UserModel.query.all()
 
         return users
 
-    def getUserById(id):
+    def get_user_by_id(id):
         user = UserModel.query.filter_by(id=id).first()
 
         print(user)
         
         if user == None:
-            raise Errors.userNotFound()
+            raise Errors.user_not_found()
         
         return user
 
-    def getUserByCredential(email, password):
+    def get_user_by_credential(email, password):
         user = UserModel.query.filter_by(email=email).first()
         
         if user == None:
-            raise Errors.userNotFound()
+            raise Errors.user_not_found()
         if user.password != password:
-            raise Errors.invalidPassword()
+            raise Errors.invalid_password()
         
         return user
 
-    def createUser(userModel):
+    def create_user(userModel):
         try:
             database.session.add(userModel)
             database.session.commit()
 
             return userModel
         except:
-            raise Errors.userAlreadyExists()
+            raise Errors.user_already_exists()
     
-    def updateUser(id, userModel):
+    def update_user(id, userModel):
         user = UserModel.query.filter_by(id=id).first()
 
         if user == None:
-            raise Errors.userNotFound()
+            raise Errors.user_not_found()
 
         user.email = userModel.email or user.email
         user.password = userModel.password or user.password
@@ -61,38 +61,38 @@ class UserRepository:
 
         return user
         
-    def updateUserPicture(id, userPicture):
+    def update_user_picture(id, user_picture):
         user = UserModel.query.filter_by(id=id).first()
 
         if user == None:
-            raise Errors.userNotFound()
+            raise Errors.user_not_found()
 
-        user.picture = userPicture
+        user.picture = user_picture
 
         database.session.commit()
 
         return user
 
-    def deleteUser(id):
+    def delete_user(id):
         user = UserModel.query.filter_by(id=id).first()
         
         if user == None:
-            raise Errors.userNotFound()
+            raise Errors.user_not_found()
         
         database.session.delete(user)
         database.session.commit()
 
         return user
     
-    def updatePassword(email, password, newPassword):
+    def update_password(email, password, new_password):
         user = UserModel.query.filter_by(email=email).first()
 
         if user == None:
-            raise Errors.userNotFound()
+            raise Errors.user_not_found()
         if user.password != password:
-            raise Errors.invalidPassword()
+            raise Errors.invalid_password()
         
-        user.password = newPassword
+        user.password = new_password
 
         database.session.commit()
 

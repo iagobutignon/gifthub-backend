@@ -1,7 +1,7 @@
 import uuid
 import datetime
 
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, TEXT
 from app.modules.infra.database import database
 
 
@@ -14,6 +14,10 @@ class UserModel(database.Model):
         default=uuid.uuid4,
         unique=True,
         nullable=False,
+    )
+    picture = database.Column(
+        TEXT,
+        nullable=False
     )
     email = database.Column(
         database.String(100),
@@ -77,6 +81,7 @@ class UserModel(database.Model):
     )
 
     def __init__(self, data):
+        self.picture = data['picture']
         self.email = data['email']
         self.password = data['password']
         self.name = data['name']
@@ -93,6 +98,7 @@ class UserModel(database.Model):
     def toJson(self):
         return {
             'id': str(self.id),
+            'picture': self.picture,
             'name': self.name,
             'surname': self.surname,
             'email': self.email,

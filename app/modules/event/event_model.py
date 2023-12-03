@@ -82,7 +82,7 @@ class EventModel(database.Model):
     user = database.relationship("UserModel")
 
     def __init__(self, data):
-        self.userId = data['user_id']
+        self.user_id = data['user_id']
         self.name = data['name']
         self.description = data['description']
         self.date = data['date']
@@ -99,7 +99,7 @@ class EventModel(database.Model):
     def toJson(self):
         return {
             'id': str(self.id),
-            'user_id': self.userId,
+            'user_id': self.user_id,
             'name': self.name,
             'description': self.description,
             'date': self.date,

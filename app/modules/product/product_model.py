@@ -50,7 +50,7 @@ class ProductModel(database.Model):
     event = database.relationship("EventModel")
 
     def __init__(self, data):
-        self.eventId = data['event_id']
+        self.event_id = data['event_id']
         self.picture = data['picture']
         self.name = data['name']
         self.value = data['value']
@@ -59,7 +59,7 @@ class ProductModel(database.Model):
     def toJson(self):
         return {
             'id': str(self.id),
-            'event_id': self.eventId,
+            'event_id': self.event_id,
             'picture': self.picture,
             'name': self.name,
             'value': self.value,

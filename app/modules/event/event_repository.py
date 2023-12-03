@@ -3,17 +3,17 @@ from app.modules.infra.database import events
 
 
 class EventRepository:
-    def getEvents():
+    def get_events():
         return events
     
-    def getEventById(id):
+    def get_event_by_id(id):
         for e in events:
             if e.id == id:
                 return e
     
-        raise Errors.eventNotFound()
+        raise Errors.event_not_found()
     
-    def getEventsByUserId(id):
+    def get_events_by_user_id(id):
         aux = []
         for e in events:
             if e.userId == id:
@@ -21,12 +21,12 @@ class EventRepository:
         
         return aux
 
-    def createEvent(eventModel):
+    def create_event(eventModel):
         events.append(eventModel)
             
         return eventModel
     
-    def updateEvent(id, eventModel):
+    def update_event(id, eventModel):
         event = None
         for e in events:
             if e.id == id:
@@ -34,18 +34,18 @@ class EventRepository:
                 break
         
         if event == None:
-            raise Errors.eventNotFound()
+            raise Errors.event_not_found()
         
         event.name = eventModel.name or event.name
         event.description = eventModel.description or event.description
         event.date = eventModel.date or event.date
         event.time = eventModel.time or event.time
-        event.image = eventModel.image or event.image
+        event.picture = eventModel.picture or event.picture
         event.address = eventModel.address or event.address
 
         return event
     
-    def deleteEvent(id):
+    def delete_event(id):
         event = None
         for e in events:
             if e.id == id:
@@ -53,7 +53,7 @@ class EventRepository:
                 break
         
         if event == None:
-            raise Errors.eventNotFound()
+            raise Errors.event_not_found()
         
         events.remove(event)
 

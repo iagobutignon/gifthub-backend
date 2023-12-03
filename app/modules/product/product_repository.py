@@ -2,17 +2,17 @@ from app.modules.shared.errors import Errors
 from app.modules.infra.database import products
 
 class ProductRepository:
-    def getProducts():
+    def get_products():
         return products
 
-    def getProductById(id):
+    def get_product_by_id(id):
         for p in products:
             if p.id == id:
                 return p
     
-        raise Errors.productNotFound()
+        raise Errors.product_not_found()
 
-    def getProductsByEventId(id):
+    def get_products_by_event_id(id):
         aux = []
         for p in products:
             if p.eventId == id:
@@ -20,12 +20,12 @@ class ProductRepository:
         
         return aux
     
-    def createProduct(productModel):
+    def create_product(productModel):
         products.append(productModel)
             
         return productModel
     
-    def updateProduct(id, productModel):
+    def update_product(id, productModel):
         product = None
         for p in products:
             if p.id == id:
@@ -33,16 +33,16 @@ class ProductRepository:
                 break
         
         if product == None:
-            raise Errors.productNotFound()
+            raise Errors.product_not_found()
         
-        product.image = productModel.image or product.image
+        product.picture = productModel.picture or product.picture
         product.name = productModel.name or product.name
         product.value = productModel.value or product.value
         product.description = productModel.description or product.description
 
         return product
     
-    def deleteProduct(id):
+    def delete_product(id):
         product = None
         for p in products:
             if p.id == id:
@@ -50,7 +50,7 @@ class ProductRepository:
                 break
         
         if product == None:
-            raise Errors.productNotFound()
+            raise Errors.product_not_found()
         
         products.remove(product)
 
