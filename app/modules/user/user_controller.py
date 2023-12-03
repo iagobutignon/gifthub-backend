@@ -1,3 +1,4 @@
+from app.modules.shared.custom_error import CustomError
 from app.modules.user.user_repository import UserRepository
 from flask import Blueprint, request
 
@@ -14,12 +15,17 @@ class UserController():
             result = UserRepository.getUsers()
 
             return [e.toJson() for e in result]
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }, e.args[2]
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @user_blueprint.get("/<id>")
     def get_user(id):
@@ -28,12 +34,18 @@ class UserController():
             
             return result.toJson(), 200
         
-        except Exception as e:
+        except CustomError as e:
+            print(e)
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }, e.args[2]
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @user_blueprint.post("/")
     def sign_up():
@@ -44,12 +56,17 @@ class UserController():
 
             return result.toJson(), 201
         
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }, e.args[2]
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @user_blueprint.put("/<id>")
     def edit_user(id):
@@ -59,12 +76,17 @@ class UserController():
             result = UserRepository.updateUser(id, user)
 
             return result.toJson(), 200
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }, e.args[2]
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
     
     @user_blueprint.delete("/<id>")
     def delete_user(id):
@@ -72,12 +94,17 @@ class UserController():
             result = UserRepository.deleteUser(id)
 
             return result.toJson(), 200
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }, e.args[2]
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
         
     @user_blueprint.post("/sign_in")
     def sign_in():
@@ -89,13 +116,17 @@ class UserController():
 
             return result.toJson(), 200
         
-        except Exception as e:
-            print(e)
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
-            }, e.args[2]
+            }
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @user_blueprint.put("/update_picture/<id>")
     def update_picture(id):
@@ -104,24 +135,34 @@ class UserController():
             result = UserRepository.updateUserPicture(id, picture)
 
             return result.toJson(), 200
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @user_blueprint.post("/forgot_password")
     def forgot_password():
         try:
             None
             # TODO: Implementar forgot_password
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @user_blueprint.post("/update_password")
     def update_password():
@@ -134,9 +175,14 @@ class UserController():
             result = UserRepository.updatePassword(email, password, new_password)
 
             return result.toJson(), 200
-        except Exception as e:
+        except CustomError as e:
             return {
                 'code': e.args[0],
                 'message': e.args[1],
                 'statusCode': e.args[2]
             }
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403

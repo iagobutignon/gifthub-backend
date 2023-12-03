@@ -1,7 +1,7 @@
 import uuid
 import datetime
 
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, DATE, TIME, TEXT
 from app.modules.infra.database import database
 
 
@@ -13,27 +13,59 @@ class EventModel(database.Model):
         primary_key=True,
         default=uuid.uuid4,
         unique=True,
-        nullable=False,
-    )
-    email = database.Column(
-        database.String(100),
-        unique=True,
         nullable=False
     )
-    password = database.Column(
-        database.String(100),
+    user_id = database.Column(
+        UUID(as_uuid=True),
+        database.ForeignKey("user_model.id"),
         nullable=False
     )
     name = database.Column(
         database.String(100),
         nullable=False
     )
-    surname = database.Column(
-        database.String(100),
-        nullable=False
-    )
     description = database.Column(
         database.String(255),
+        nullable=False
+    )
+    date = database.Column(
+        DATE,
+        nullable=False
+    )
+    time = database.Column(
+        TIME,
+        nullable=False
+    )
+    picture = database.Column(
+        TEXT,
+        nullable=False
+    )
+    cep = database.Column(
+        database.String(9),
+        nullable=False
+    )
+    number = database.Column(
+        database.String(10),
+        nullable=False
+    )
+    street = database.Column(
+        database.String(50),
+        nullable=False
+    )
+    district = database.Column(
+        database.String(50),
+        nullable=False
+    )
+    city = database.Column(
+        database.String(50),
+        nullable=False
+    )
+    state = database.Column(
+        database.String(2),
+        nullable=False
+    )
+    complement = database.Column(
+        database.String(50),
         nullable=False
     )
     created_at = database.Column(
@@ -47,6 +79,7 @@ class EventModel(database.Model):
         onupdate=datetime.datetime.now(),
         nullable=False
     )
+    user = database.relationship("UserModel")
 
     def __init__(self, data):
         self.userId = data['user_id']
@@ -54,7 +87,7 @@ class EventModel(database.Model):
         self.description = data['description']
         self.date = data['date']
         self.time = data['time']
-        self.image = data['image']
+        self.picture = data['picture']
         self.cep = data['cep']
         self.number = data['number']
         self.street = data['street']
@@ -71,7 +104,7 @@ class EventModel(database.Model):
             'description': self.description,
             'date': self.date,
             'time': self.time,
-            'image': self.image,
+            'picture': self.picture,
             'cep': self.cep,
             'number': self.number,
             'street': self.street,

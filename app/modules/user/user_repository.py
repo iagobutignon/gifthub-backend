@@ -1,5 +1,4 @@
 from app.modules.shared.errors import Errors
-from app.modules.infra.database import users
 from app.modules.user.user_model import UserModel
 from app.modules.infra.database import database
 

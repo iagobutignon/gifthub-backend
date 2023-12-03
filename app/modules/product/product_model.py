@@ -1,7 +1,7 @@
 import uuid
 import datetime
 
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, TEXT, NUMERIC
 from app.modules.infra.database import database
 
 
@@ -15,21 +15,21 @@ class ProductModel(database.Model):
         unique=True,
         nullable=False,
     )
-    email = database.Column(
-        database.String(100),
-        unique=True,
+    event_id = database.Column(
+        UUID(as_uuid=True),
+        database.ForeignKey("event_model.id"),
         nullable=False
     )
-    password = database.Column(
-        database.String(100),
+    picture = database.Column(
+        TEXT,
         nullable=False
     )
     name = database.Column(
         database.String(100),
         nullable=False
     )
-    surname = database.Column(
-        database.String(100),
+    value = database.Column(
+        NUMERIC,
         nullable=False
     )
     description = database.Column(
@@ -47,10 +47,11 @@ class ProductModel(database.Model):
         onupdate=datetime.datetime.now(),
         nullable=False
     )
+    event = database.relationship("EventModel")
 
     def __init__(self, data):
         self.eventId = data['event_id']
-        self.image = data['image']
+        self.picture = data['picture']
         self.name = data['name']
         self.value = data['value']
         self.description = data['description']
@@ -59,7 +60,7 @@ class ProductModel(database.Model):
         return {
             'id': str(self.id),
             'event_id': self.eventId,
-            'image': self.image,
+            'picture': self.picture,
             'name': self.name,
             'value': self.value,
             'description': self.description,

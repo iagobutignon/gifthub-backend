@@ -1,4 +1,3 @@
-users = []
 events = []
 products = []
 
