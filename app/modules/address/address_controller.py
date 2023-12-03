@@ -14,3 +14,8 @@ class AddressController:
             return result.toJson(), 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403

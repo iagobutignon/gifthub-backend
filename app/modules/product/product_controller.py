@@ -17,6 +17,11 @@ class ProductController():
             return [e.toJson() for e in result], 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
         
     @product_blueprint.get("/get_products_by_event_id/<id>")
     def get_products_by_event_id(id):
@@ -26,6 +31,11 @@ class ProductController():
             return [e.toJson() for e in result], 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
         
 
     @product_blueprint.get("/<id>")
@@ -36,6 +46,11 @@ class ProductController():
             return result.toJson(), 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
         
     @product_blueprint.post("/")
     def create_product():
@@ -47,6 +62,11 @@ class ProductController():
             return result.toJson(), 201
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @product_blueprint.put("/<id>")
     def update_product(id):
@@ -58,6 +78,11 @@ class ProductController():
             return result.toJson(), 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
 
     @product_blueprint.delete("/<id>")
     def delete_product(id):
@@ -67,3 +92,8 @@ class ProductController():
             return result.toJson(), 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403

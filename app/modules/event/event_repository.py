@@ -1,60 +1,65 @@
 from app.modules.shared.errors import Errors
-from app.modules.infra.database import events
-
+from app.modules.infra.database import database
+from app.modules.event.event_model import EventModel
 
 class EventRepository:
     def get_events():
+        events = EventModel.query.all()
+
         return events
     
     def get_event_by_id(id):
-        for e in events:
-            if e.id == id:
-                return e
-    
-        raise Errors.event_not_found()
-    
-    def get_events_by_user_id(id):
-        aux = []
-        for e in events:
-            if e.userId == id:
-                aux.append(e)
-        
-        return aux
+        event = EventModel.query.filter_by(id=id).first()
 
-    def create_event(eventModel):
-        events.append(eventModel)
-            
-        return eventModel
-    
-    def update_event(id, eventModel):
-        event = None
-        for e in events:
-            if e.id == id:
-                event = e
-                break
-        
         if event == None:
             raise Errors.event_not_found()
         
-        event.name = eventModel.name or event.name
-        event.description = eventModel.description or event.description
-        event.date = eventModel.date or event.date
-        event.time = eventModel.time or event.time
-        event.picture = eventModel.picture or event.picture
-        event.address = eventModel.address or event.address
+        return event
+    
+    def get_events_by_user_id(id):
+        events = EventModel.query.filter_by(user_id=id)
+
+        return events
+
+    def create_event(event_model):
+        try:
+            database.session.add(event_model)
+            database.session.commit()
+
+            return event_model
+        except:
+            raise Errors.error_creating_event()
+        
+    def update_event(id, event_model):
+        event = EventModel.query.filter_by(id=id).first()
+        
+        if event == None:
+            raise Errors.event_not_found()
+
+        event.name = event_model.name or event.name
+        event.description = event_model.description or event.description
+        event.date = event_model.date or event.date
+        event.time = event_model.time or event.time
+        event.picture = event_model.picture or event.picture
+        event.cep = event_model.cep or event.cep
+        event.number = event_model.number or event.number
+        event.street = event_model.street or event.street
+        event.district = event_model.district or event.district
+        event.city = event_model.city or event.city
+        event.state = event_model.state or event.state
+        event.complement = event_model.complement or event.complement
+
+        database.session.commit()
 
         return event
     
     def delete_event(id):
-        event = None
-        for e in events:
-            if e.id == id:
-                event = e
-                break
-        
+        event = EventModel.query.filter_by(id=id).first()
+
         if event == None:
             raise Errors.event_not_found()
         
-        events.remove(event)
+        database.session.delete(event)
+        database.session.commit()
 
         return event

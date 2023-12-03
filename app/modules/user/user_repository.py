@@ -11,8 +11,6 @@ class UserRepository:
 
     def get_user_by_id(id):
         user = UserModel.query.filter_by(id=id).first()
-
-        print(user)
         
         if user == None:
             raise Errors.user_not_found()
@@ -29,33 +27,33 @@ class UserRepository:
         
         return user
 
-    def create_user(userModel):
+    def create_user(user_model):
         try:
-            database.session.add(userModel)
+            database.session.add(user_model)
             database.session.commit()
 
-            return userModel
+            return user_model
         except:
             raise Errors.user_already_exists()
     
-    def update_user(id, userModel):
+    def update_user(id, user_model):
         user = UserModel.query.filter_by(id=id).first()
 
         if user == None:
             raise Errors.user_not_found()
 
-        user.email = userModel.email or user.email
-        user.password = userModel.password or user.password
-        user.name = userModel.name or user.name
-        user.surname = userModel.surname or user.surname
-        user.description = userModel.description or user.description
-        user.cep = userModel.cep or user.cep
-        user.number = userModel.number or user.number
-        user.street = userModel.street or user.street
-        user.district = userModel.district or user.district
-        user.city = userModel.city or user.city
-        user.state = userModel.state or user.state
-        user.complement = userModel.complement or user.complement
+        user.email = user_model.email or user.email
+        user.password = user_model.password or user.password
+        user.name = user_model.name or user.name
+        user.surname = user_model.surname or user.surname
+        user.description = user_model.description or user.description
+        user.cep = user_model.cep or user.cep
+        user.number = user_model.number or user.number
+        user.street = user_model.street or user.street
+        user.district = user_model.district or user.district
+        user.city = user_model.city or user.city
+        user.state = user_model.state or user.state
+        user.complement = user_model.complement or user.complement
 
         database.session.commit()
 

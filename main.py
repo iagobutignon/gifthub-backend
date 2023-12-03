@@ -15,4 +15,4 @@ app.register_blueprint(product_blueprint, url_prefix="/product")
 app.register_blueprint(address_blueprint, url_prefix="/address")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=5001)

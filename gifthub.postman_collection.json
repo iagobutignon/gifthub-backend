@@ -11,9 +11,16 @@
 			"item": [
 				{
 					"name": "GetUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://{{serverip}}/user/",
 							"protocol": "http",
@@ -30,9 +37,16 @@
 				},
 				{
 					"name": "GetUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://{{serverip}}/user/adb53ecf-9d92-4ef8-982f-69bced7fae11",
 							"protocol": "http",
@@ -54,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"iago.butignon1@google.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iagoo\",\n    \"surname\": \"Butignon\",\n    \"description\": \"Lorem ipsum dolor si a amet\",\n    \"cep\": \"14026210\",\n    \"number\": \"123\",\n    \"street\": \"Rua Adercia Machado Gontijo\",\n    \"district\": \"Residencial Florida\",\n    \"city\": \"Ribeirão Preto\",\n    \"state\": \"SP\",\n    \"complement\": \"apt 13\"\n}",
+							"raw": "{\n    \"picture\": \"\",\n    \"email\": \"iago.butignon1@google.com\",\n    \"password\": \"123456789\",\n    \"name\": \"Iagoo\",\n    \"surname\": \"Butignon\",\n    \"description\": \"Lorem ipsum dolor si a amet\",\n    \"cep\": \"14026210\",\n    \"number\": \"123\",\n    \"street\": \"Rua Adercia Machado Gontijo\",\n    \"district\": \"Residencial Florida\",\n    \"city\": \"Ribeirão Preto\",\n    \"state\": \"SP\",\n    \"complement\": \"apt 13\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -276,7 +290,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{serverip}}/event/get_events_by_user_id/d6e36bfa-8000-41ed-9ca6-d24f70eea950",
+							"raw": "http://{{serverip}}/event/get_events_by_user_id/39a0fefe-5354-4e8f-a351-39c6a243fb13",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
@@ -284,7 +298,7 @@
 							"path": [
 								"event",
 								"get_events_by_user_id",
-								"d6e36bfa-8000-41ed-9ca6-d24f70eea950"
+								"39a0fefe-5354-4e8f-a351-39c6a243fb13"
 							]
 						}
 					},
@@ -297,7 +311,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": \"d6e36bfa-8000-41ed-9ca6-d24f70eea950\",\n    \"name\": \"Confra da Urmobo\",\n    \"date\": \"16/12/2023\",\n    \"time\": \"19:00\",\n    \"description\": \"Dia da confra da empresa, dia bom, dia legal\",\n    \"address\": {\n        \"cep\": \"14027-250\",\n        \"number\": \"900\",\n        \"street\": \"Rua Adercia Machado Gontijo\",\n        \"district\": \"Residencial Florida\",\n        \"city\": \"Ribeirão Preto\",\n        \"state\": \"SP\",\n        \"complement\": \"apt 13\"\n    }\n}",
+							"raw": "{\n    \"user_id\": \"39a0fefe-5354-4e8f-a351-39c6a243fb13\",\n    \"picture\": \"\",\n    \"name\": \"Confra da Urmobo\",\n    \"date\": \"2023-12-16\",\n    \"time\": \"19:00\",\n    \"description\": \"Dia da confra da empresa, dia bom, dia legal\",\n    \"cep\": \"14027-250\",\n    \"number\": \"900\",\n    \"street\": \"Rua Adercia Machado Gontijo\",\n    \"district\": \"Residencial Florida\",\n    \"city\": \"Ribeirão Preto\",\n    \"state\": \"SP\",\n    \"complement\": \"apt 13\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -325,7 +339,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"address\": {\n        \"cep\": \"14027-250\",\n        \"city\": \"Ribeirão Preto\",\n        \"complement\": \"apt 13\",\n        \"district\": \"Residencial Florida\",\n        \"number\": \"900\",\n        \"state\": \"SP\",\n        \"street\": \"Rua Adercia Machado Gontijo\"\n    },\n    \"date\": \"16/12/2023\",\n    \"description\": \"Dia da confra da empresa, dia bom, dia legal\",\n    \"id\": \"81c0fc9a-b5fb-4e44-a14e-cd1e20cccfeb\",\n    \"image\": null,\n    \"name\": \"Confraternizacao da Urmobo\",\n    \"time\": \"19:00\",\n    \"user_id\": \"d6e36bfa-8000-41ed-9ca6-d24f70eea950\"\n}",
+							"raw": "{\n    \"user_id\": \"39a0fefe-5354-4e8f-a351-39c6a243fb13\",\n    \"picture\": \"teste\",\n    \"name\": \"Confra da Urmobo\",\n    \"date\": \"2023-12-16\",\n    \"time\": \"19:00\",\n    \"description\": \"Dia da confra da empresa, dia bom, dia legal\",\n    \"cep\": \"14027-250\",\n    \"number\": \"900\",\n    \"street\": \"Rua Adercia Machado Gontijo\",\n    \"district\": \"Residencial Florida\",\n    \"city\": \"Ribeirão Preto\",\n    \"state\": \"SP\",\n    \"complement\": \"apt 13\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -333,14 +347,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{serverip}}/event/81c0fc9a-b5fb-4e44-a14e-cd1e20cccfeb",
+							"raw": "http://{{serverip}}/event/8c0a03d3-149c-40b1-a30d-858231fb431d",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"event",
-								"81c0fc9a-b5fb-4e44-a14e-cd1e20cccfeb"
+								"8c0a03d3-149c-40b1-a30d-858231fb431d"
 							]
 						}
 					},
@@ -352,14 +366,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/event/4562144a-f7ce-4db3-beb3-47f64d30db80",
+							"raw": "http://{{serverip}}/event/d40e87c9-4617-445d-b66e-12e8f37bedac",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"event",
-								"4562144a-f7ce-4db3-beb3-47f64d30db80"
+								"d40e87c9-4617-445d-b66e-12e8f37bedac"
 							]
 						}
 					},
@@ -376,14 +390,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/product/179bf700-14db-4323-bab1-1e350c7b4aec",
+							"raw": "http://{{serverip}}/product/4aac6895-bccf-42b1-8d12-aa04d1ec4270",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"product",
-								"179bf700-14db-4323-bab1-1e350c7b4aec"
+								"4aac6895-bccf-42b1-8d12-aa04d1ec4270"
 							]
 						}
 					},
@@ -414,7 +428,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/product/get_products_by_event_id/1",
+							"raw": "http://{{serverip}}/product/get_products_by_event_id/8c0a03d3-149c-40b1-a30d-858231fb431d",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
@@ -422,7 +436,7 @@
 							"path": [
 								"product",
 								"get_products_by_event_id",
-								"1"
+								"8c0a03d3-149c-40b1-a30d-858231fb431d"
 							]
 						}
 					},
@@ -435,7 +449,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"event_id\": \"1\",\n    \"name\": \"Air dots\",\n    \"value\": 200,\n    \"description\": \"Saporra é falso tb,\"\n}",
+							"raw": "{\n    \"event_id\": \"8c0a03d3-149c-40b1-a30d-858231fb431d\",\n    \"picture\": \"\",\n    \"name\": \"Air dots\",\n    \"value\": 200,\n    \"description\": \"Saporra é falso tb,\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -463,7 +477,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"event_id\": \"1\",\n    \"name\": \"Nike Running 2\",\n    \"value\": 150,\n    \"description\": \"Falso tb,\"\n}",
+							"raw": "{\n    \"event_id\": \"8c0a03d3-149c-40b1-a30d-858231fb431d\",\n    \"picture\": \"\",\n    \"name\": \"Air dots\",\n    \"value\": 200,\n    \"description\": \"Saporra é falso tb demais\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -471,14 +485,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{serverip}}/product/1929bbe7-5eff-4159-817b-eebf6852d3c0",
+							"raw": "http://{{serverip}}/product/4aac6895-bccf-42b1-8d12-aa04d1ec4270",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"product",
-								"1929bbe7-5eff-4159-817b-eebf6852d3c0"
+								"4aac6895-bccf-42b1-8d12-aa04d1ec4270"
 							]
 						}
 					},
@@ -490,14 +504,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://{{serverip}}/product/179bf700-14db-4323-bab1-1e350c7b4aec",
+							"raw": "http://{{serverip}}/product/4aac6895-bccf-42b1-8d12-aa04d1ec4270",
 							"protocol": "http",
 							"host": [
 								"{{serverip}}"
 							],
 							"path": [
 								"product",
-								"179bf700-14db-4323-bab1-1e350c7b4aec"
+								"4aac6895-bccf-42b1-8d12-aa04d1ec4270"
 							]
 						}
 					},

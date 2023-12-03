@@ -1,57 +1,57 @@
 from app.modules.shared.errors import Errors
-from app.modules.infra.database import products
+from app.modules.infra.database import database
+from app.modules.product.product_model import ProductModel
 
 class ProductRepository:
     def get_products():
-        return products
+        products = ProductModel.query.all()
 
-    def get_product_by_id(id):
-        for p in products:
-            if p.id == id:
-                return p
+        return products
     
-        raise Errors.product_not_found()
+    def get_product_by_id(id):
+        product = ProductModel.query.filter_by(id=id).first()
+
+        if product == None:
+            raise Errors.product_not_found()
+        
+        return product
 
     def get_products_by_event_id(id):
-        aux = []
-        for p in products:
-            if p.eventId == id:
-                aux.append(p)
-        
-        return aux
+        products = ProductModel.query.filter_by(event_id=id)
+
+        return products
     
-    def create_product(productModel):
-        products.append(productModel)
-            
-        return productModel
+    def create_product(product_model):
+        try:
+            database.session.add(product_model)
+            database.session.commit()
+
+            return product_model
+        except:
+            raise Errors.error_creating_product()
     
-    def update_product(id, productModel):
-        product = None
-        for p in products:
-            if p.id == id:
-                product = p
-                break
+    def update_product(id, product_model):
+        product = ProductModel.query.filter_by(id=id).first()
         
         if product == None:
             raise Errors.product_not_found()
         
-        product.picture = productModel.picture or product.picture
-        product.name = productModel.name or product.name
-        product.value = productModel.value or product.value
-        product.description = productModel.description or product.description
+        product.picture = product_model.picture or product.picture
+        product.name = product_model.name or product.name
+        product.value = product_model.value or product.value
+        product.description = product_model.description or product.description
+
+        database.session.commit()
 
         return product
     
     def delete_product(id):
-        product = None
-        for p in products:
-            if p.id == id:
-                product = p
-                break
-        
+        product = ProductModel.query.filter_by(id=id).first()
+
         if product == None:
             raise Errors.product_not_found()
         
-        products.remove(product)
+        database.session.delete(product)
+        database.session.commit()
 
         return product

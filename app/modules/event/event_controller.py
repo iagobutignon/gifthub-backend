@@ -17,6 +17,12 @@ class EventController():
             return [e.toJson() for e in result], 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+
     
     @event_blueprint.get("/get_events_by_user_id/<id>")
     def get_events_by_user_id(id):
@@ -26,6 +32,12 @@ class EventController():
             return [e.toJson() for e in result], 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+        
         
     @event_blueprint.get("/<id>")
     def get_event(id):
@@ -34,7 +46,14 @@ class EventController():
             
             return result.toJson(), 200
         except CustomError as e:
+            print(e)
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+        
 
     @event_blueprint.post("/")
     def create_event():
@@ -46,6 +65,13 @@ class EventController():
             return result.toJson(), 201
         except CustomError as e:
             return e.to_response()
+        except Exception as e:
+            print(e)
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+        
 
 
     @event_blueprint.put("/<id>")
@@ -58,6 +84,12 @@ class EventController():
             return result.toJson(), 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+        
 
 
     @event_blueprint.delete("/<id>")
@@ -68,3 +100,9 @@ class EventController():
             return result.toJson(), 200
         except CustomError as e:
             return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+        
