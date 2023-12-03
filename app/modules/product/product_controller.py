@@ -1,7 +1,8 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, send_file
 from app.modules.product.product_model import ProductModel
 
 from app.modules.product.product_repository import ProductRepository
+from app.modules.product.product_service import ProductService
 from app.modules.shared.custom_error import CustomError
 
 
@@ -90,6 +91,41 @@ class ProductController():
             result = ProductRepository.delete_product(id)
 
             return result.toJson(), 200
+        except CustomError as e:
+            return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+
+    @product_blueprint.get("/export_products/<id>")
+    def export_products(id):
+        try:
+            result = ProductService.export_products_by_event_id(id)
+
+            return send_file(result), 200
+        except CustomError as e:
+            return e.to_response()
+        except:
+            return {
+                'code': 1,
+                'message': 'Ocorreu um erro'
+            }, 403
+        
+    @product_blueprint.put("/import_products/<id>")
+    def import_products(id):
+        try:
+            if len(request.files) < 1:
+                return 'Nenhum arquivo recebido', 400
+
+            arquivo = request.files[0]
+            caminho_do_arquivo = 'temp/arquivo.txt'
+
+            arquivo.save(caminho_do_arquivo)
+
+            return 'Arquivo recebido e salvo com sucesso!', 200
+
         except CustomError as e:
             return e.to_response()
         except:

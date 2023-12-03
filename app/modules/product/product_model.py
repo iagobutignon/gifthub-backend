@@ -67,3 +67,11 @@ class ProductModel(database.Model):
             'created_at': str(self.created_at),
             'updated_at': str(self.updated_at)
         }
+    
+    def export(self):
+        return {
+            'picture': self.picture,
+            'name': self.name,
+            'value': float(self.value),
+            'description': self.description,
+        }

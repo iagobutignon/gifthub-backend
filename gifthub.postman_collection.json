@@ -443,13 +443,33 @@
 					"response": []
 				},
 				{
+					"name": "ExportProductsByEventId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{serverip}}/product/export_products/8c0a03d3-149c-40b1-a30d-858231fb431d",
+							"protocol": "http",
+							"host": [
+								"{{serverip}}"
+							],
+							"path": [
+								"product",
+								"export_products",
+								"8c0a03d3-149c-40b1-a30d-858231fb431d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CreateProduct",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"event_id\": \"8c0a03d3-149c-40b1-a30d-858231fb431d\",\n    \"picture\": \"\",\n    \"name\": \"Air dots\",\n    \"value\": 200,\n    \"description\": \"Saporra é falso tb,\"\n}",
+							"raw": "{\n    \"event_id\": \"8c0a03d3-149c-40b1-a30d-858231fb431d\",\n    \"picture\": \"\",\n    \"name\": \"Tenis da Nike\",\n    \"value\": 100,\n    \"description\": \"Saporra é falso\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
