@@ -34,16 +34,21 @@ sudo docker-compose up -d
 ```
 
 Para localizar o endereço de IP do container que será utilizado na string de conexão, execute o comando abaixo
+###### Linux
 ```
 sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres // <- "Nome do container"
 ```
-
+###### Windows
+No PowerShell, o seguinte comando pode ser executado:
+```
+docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" postgres
+```
 No arquivo database.py, configure a string de conexão.
 ```
 # Estrutura da string de conexão
-# "postgresql://usuario:senha@endereco_ip:porta/nome_do_banco"
+"postgresql://usuario:senha@endereco_ip:porta/nome_do_banco"
 ```
-Exemplo:
+###### Exemplo:
 ```
 def configure_database(app):
     global engine
