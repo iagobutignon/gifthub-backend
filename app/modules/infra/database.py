@@ -1,6 +1,3 @@
-events = []
-products = []
-
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 
