@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 configure_database(app)
-CORS(app, resources={r"/": {"origins": ""}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 app.register_blueprint(user_blueprint, url_prefix="/user")
 app.register_blueprint(event_blueprint, url_prefix="/event")
