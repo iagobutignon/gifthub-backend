@@ -6,33 +6,34 @@ Para executar o backend é necessário a instalação e configuração do Docker
 ### Passo a passo
 
 ##### (Opcional) Ambiente virtual
-Criar um ambiente virtual para a instalação das dependências no Python.
+Para criar um ambiente virtual para a instalação das dependências no Python, execute o comando abaixo.
 ```
 virtualenv .venv
 ```
 
-Ativar o ambiente virtual
+Ative o ambiente virtual.
 ```
 source ./.venv/bin/activate
 ```
 
-Atualizar a versão do pip dentro do ambiente virtual
+Atualize a versão do pip dentro do ambiente virtual.
 ```
 python -m pip install --upgrade pip
 ```
+##### Ambiente virtual
 
-Instalar os packages contidos no arquivo requirements.txt
+Para instalar as dependências necessarias, execute o comando abaixo dentro da pasta do projeto.
 ```
 pip install -r ./requirements.txt
 ```
 ##### Docker
 
-Dentro da pasta do projeto, crie o container contendo o banco de dados postgres executando o comando abaixo
+Dentro da pasta do projeto, execute o docker-compose para criar e executar o container contendo o banco de dados da aplicação.
 ```
 sudo docker-compose up -d 
 ```
 
-Para localizar o endereço de IP do container que será utilizado na string de conexão execute o comando abaixo
+Para localizar o endereço de IP do container que será utilizado na string de conexão, execute o comando abaixo
 ```
 sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres // <- "Nome do container"
 ```
