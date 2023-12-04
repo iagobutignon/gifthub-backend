@@ -119,6 +119,7 @@ class ProductController():
         try:
             result = ProductService.import_products_to_event(id, request.files)
 
+            print(result)
             return [e.toJson() for e in result], 200
         except CustomError as e:
             return e.to_response()

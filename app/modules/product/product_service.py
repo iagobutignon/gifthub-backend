@@ -20,6 +20,7 @@ class ProductService:
     
     def import_products_to_event(event_id, request_files):
         try:
+            print(request_files)
             if 'file' not in request_files:
                 return 'Nenhum arquivo recebido', 400
                 
